@@ -1,0 +1,64 @@
+import random
+
+# Rolls the stats
+def roll():
+    stat = []
+
+    stat.append(random.randint(1,20))
+    stat.append(random.randint(1,20))
+    stat.append(random.randint(1,20))
+    stat.append(random.randint(1,20))
+    stat.append(random.randint(1,20))
+    stat.append(random.randint(1,20))
+    return stat
+
+# Finds the main stats from the inputed list
+def mainStats(statList):
+    # Calculates the highest stat
+    statDefList = ["STR", "DEX", "CON", "INT", "WIS", "CHA"]
+    highestStat = 0
+    secondStat = 0
+
+    # Skips STR since it will always be the first stat compared to
+    for i in range(1,6):
+        if statList[i] > statList[highestStat]:
+            highestStat = i
+
+    # Calculates the 2nd highest stat
+    # Removes the highest stat from the new list
+    secondaryStatList = list(statList)
+    secondaryStatList.pop(highestStat)
+    statDefList2 = list(statDefList)
+    statDefList2.remove(statDefList[highestStat])
+    for i in range(1,5):
+        if secondaryStatList[i] > secondaryStatList[secondStat]:
+            secondStat = i
+
+    return [statDefList[highestStat], statDefList2[secondStat]]
+
+
+# Contains the main chunk of code
+def mainSys():
+
+    # Initialises point buy equivalence variable
+    pbe = 0
+
+    # Rolls stats until the point buy equivalence is equal to the standard 27
+    while pbe != 27:
+
+        stats = roll()
+
+        pbe = 0
+
+        for i in stats:
+            if i < 14:
+                singlePbe = i - 8
+            else:
+                singlePbe = 2*(i - 13)+5
+            pbe = pbe + singlePbe
+
+    print(stats, mainStats(stats))
+
+
+# Runs the system
+mainSys()
