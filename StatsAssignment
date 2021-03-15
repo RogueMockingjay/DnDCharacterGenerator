@@ -58,7 +58,8 @@ def mainSys():
             pbe = pbe + singlePbe
 
     print(stats, mainStats(stats))
-
+    return stats
 
 # Runs the system
-mainSys()
+if __name__ == "__main__":
+    mainSys()
