@@ -5,13 +5,13 @@ def classAssign(attributeList):
                        ("CON", "STR"): Barbarian,
                        ("WIS", "STR"): Cleric}
     maxList = StatsAssignment.mainStats(attributeList)
-    return conversionTable[tuple(maxList[0], maxList[1])](attributeList)
+    return conversionTable[tuple([maxList[0], maxList[1]])](attributeList,maxList)
 
 class Base:
     def getModifier(self, stat):
         return int((stat-10)/2)
     
-    def getHitpoints():
+    def getHitpoints(self):
         if self.size == "small":
             return 13+3*self.attributes["CON"][1]
         elif self.size == "medium":
@@ -23,12 +23,15 @@ class Base:
 
     def __init__(self, attributeList, maxList, size):
         attributes = ["STR", "DEX", "CON", "INT", "WIS", "CHA"]
-        attributeModifiers = list(map(self.getmodifier, attributeList))
+        self.maxList = [attributes[maxList[0]],attributes[maxList[1]]]
+        attributeModifiers = list(map(self.getModifier, attributeList))
         # This maps all of the attributeList through the get modifier function
         self.attributes = dict(
             zip(attributes, list(zip(attributeList, attributeModifiers))))
         # Attributes in the format STR:[VALUE,MODIFIER]
         self.size = size
+        self.hitpoints = self.getHitpoints()
+        
         
 
 class Artificer(Base):
