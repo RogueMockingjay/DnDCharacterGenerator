@@ -1,5 +1,6 @@
 import StatsAssignment
 
+
 def classAssign(attributeList):
     conversionTable = {("STR", "DEX"): Fighter,
                        ("STR", "CON"): Barbarian,
@@ -33,21 +34,23 @@ def classAssign(attributeList):
                        ("CHA", "WIS"): Warlock,
                        }
     maxList = StatsAssignment.mainStats(attributeList)
-    return conversionTable[tuple([maxList[0], maxList[1]])](attributeList,maxList)
+    return conversionTable[tuple([maxList[0], maxList[1]])]\
+        (attributeList, maxList)
+
 
 class Base:
     def getModifier(self, stat):
-        return int((stat-10)/2)
-    
+        return int((stat - 10) / 2)
+
     def getHitpoints(self):
         if self.size == "small":
-            return 13+3*self.attributes["CON"][1]
+            return 13 + 3 * self.attributes["CON"][1]
         elif self.size == "medium":
-            return 17+3*self.attributes["CON"][1]
+            return 17 + 3 * self.attributes["CON"][1]
         elif self.size == "large":
-            return 21+3*self.attributes["CON"][1]
+            return 21 + 3 * self.attributes["CON"][1]
         elif self.size == "huge":
-            return 25+3*self.attributes["CON"][1]
+            return 25 + 3 * self.attributes["CON"][1]
 
     def __init__(self, attributeList, maxList, size):
         attributes = ["STR", "DEX", "CON", "INT", "WIS", "CHA"]
@@ -59,58 +62,74 @@ class Base:
         # Attributes in the format STR:[VALUE,MODIFIER]
         self.size = size
         self.hitpoints = self.getHitpoints()
-        
-        
+
 
 class Artificer(Base):
     def __init__(self, attributeList, maxList):
-        super().__init__(attributeList, maxList,"medium")
+        super().__init__(attributeList, maxList, "medium")
+
 
 class Bard(Base):
     def __init__(self, attributeList, maxList):
-        super().__init__(attributeList, maxList,"medium")
+        super().__init__(attributeList, maxList, "medium")
+
 
 class Barbarian(Base):
     def __init__(self, attributeList, maxList):
-        super().__init__(attributeList, maxList,"huge")
+        super().__init__(attributeList, maxList, "huge")
+
 
 class Cleric(Base):
     def __init__(self, attributeList, maxList):
-        super().__init__(attributeList, maxList,"medium")
+        super().__init__(attributeList, maxList, "medium")
+
 
 class Druid(Base):
     def __init__(self, attributeList, maxList):
-        super().__init__(attributeList, maxList,"medium")
+        super().__init__(attributeList, maxList, "medium")
+
 
 class Fighter(Base):
     def __init__(self, attributeList, maxList):
-        super().__init__(attributeList, maxList,"large")
+        super().__init__(attributeList, maxList, "large")
+
 
 class Monk(Base):
     def __init__(self, attributeList, maxList):
-        super().__init__(attributeList, maxList,"medium")
+        super().__init__(attributeList, maxList, "medium")
+
 
 class Paladin(Base):
     def __init__(self, attributeList, maxList):
-        super().__init__(attributeList, maxList,"large")
+        super().__init__(attributeList, maxList, "large")
+
 
 class Ranger(Base):
     def __init__(self, attributeList, maxList):
-        super().__init__(attributeList, maxList,"large")
+        super().__init__(attributeList, maxList, "large")
+
 
 class Rogue(Base):
     def __init__(self, attributeList, maxList):
-        super().__init__(attributeList, maxList,"medium")
+        super().__init__(attributeList, maxList, "medium")
+
 
 class Sorcerer(Base):
     def __init__(self, attributeList, maxList):
-        super().__init__(attributeList, maxList,"small")
+        super().__init__(attributeList, maxList, "small")
+
 
 class Warlock(Base):
     def __init__(self, attributeList, maxList):
-        super().__init__(attributeList, maxList,"medium")
+        super().__init__(attributeList, maxList, "medium")
+
 
 class Wizard(Base):
     def __init__(self, attributeList, maxList):
-        super().__init__(attributeList, maxList,"small")
+        super().__init__(attributeList, maxList, "small")
 
+
+if __name__ == "__main__":
+    character = classAssign(StatsAssignment.mainStats())
+    print(character)
+    print(character.getHitpoints())
