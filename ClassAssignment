@@ -1,1 +1,73 @@
+import StatsAssignment
+
+def classAssign(attributeList):
+    conversionTable = {("DEX", "STR"): Fighter,
+                       ("CON", "STR"): Barbarian,
+                       ("WIS", "STR"): Cleric}
+    maxList = StatsAssignment.mainStats(attributeList)
+    return conversionTable[tuple(maxList[0], maxList[1])](attributeList)
+
+class Base:
+    def getModifier(self, stat):
+        return int((stat-10)/2)
+
+    def __init__(self, attributeList, maxList):
+        attributes = ["STR", "DEX", "CON", "INT", "WIS", "CHA"]
+        attributeModifiers = list(map(self.getmodifier, attributeList))
+        # This maps all of the attributeList through the get modifier function
+        self.attributes = dict(
+            zip(attributes, list(zip(attributeList, attributeModifiers))))
+        # Attributes in the format STR:[VALUE,MODIFIER]
+
+class Artificer(Base):
+    def __init__(self, attributeList, maxList):
+        super().__init__(attributeList, maxList)
+
+class Bard(Base):
+    def __init__(self, attributeList, maxList):
+        super().__init__(attributeList, maxList)
+
+class Barbarian(Base):
+    def __init__(self, attributeList, maxList):
+        super().__init__(attributeList, maxList)
+
+class Cleric(Base):
+    def __init__(self, attributeList, maxList):
+        super().__init__(attributeList, maxList)
+
+class Druid(Base):
+    def __init__(self, attributeList, maxList):
+        super().__init__(attributeList, maxList)
+
+class Fighter(Base):
+    def __init__(self, attributeList, maxList):
+        super().__init__(attributeList, maxList)
+
+class Monk(Base):
+    def __init__(self, attributeList, maxList):
+        super().__init__(attributeList, maxList)
+
+class Paladin(Base):
+    def __init__(self, attributeList, maxList):
+        super().__init__(attributeList, maxList)
+
+class Ranger(Base):
+    def __init__(self, attributeList, maxList):
+        super().__init__(attributeList, maxList)
+
+class Rogue(Base):
+    def __init__(self, attributeList, maxList):
+        super().__init__(attributeList, maxList)
+
+class Sorcerer(Base):
+    def __init__(self, attributeList, maxList):
+        super().__init__(attributeList, maxList)
+
+class Warlock(Base):
+    def __init__(self, attributeList, maxList):
+        super().__init__(attributeList, maxList)
+
+class Wizard(Base):
+    def __init__(self, attributeList, maxList):
+        super().__init__(attributeList, maxList)
 
