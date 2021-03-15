@@ -1,9 +1,37 @@
 import StatsAssignment
 
 def classAssign(attributeList):
-    conversionTable = {("DEX", "STR"): Fighter,
+    conversionTable = {("STR", "DEX"): Fighter,
+                       ("STR", "CON"): Barbarian,
+                       ("STR", "INT"): Artificer,
+                       ("STR", "WIS"): Cleric,
+                       ("STR", "CHA"): Bard,
+                       ("DEX", "STR"): Fighter,
+                       ("DEX", "CON"): Rogue,
+                       ("DEX", "INT"): Rogue,
+                       ("DEX", "WIS"): Monk,
+                       ("DEX", "CHA"): Bard,
                        ("CON", "STR"): Barbarian,
-                       ("WIS", "STR"): Cleric}
+                       ("CON", "DEX"): Barbarian,
+                       ("CON", "INT"): Artificer,
+                       ("CON", "WIS"): Ranger,
+                       ("CON", "CHA"): Warlock,
+                       ("INT", "STR"): Artificer,
+                       ("INT", "DEX"): Wizard,
+                       ("INT", "CON"): Artificer,
+                       ("INT", "WIS"): Wizard,
+                       ("INT", "CHA"): Wizard,
+                       ("WIS", "STR"): Cleric,
+                       ("WIS", "DEX"): Monk,
+                       ("WIS", "CON"): Druid,
+                       ("WIS", "INT"): Druid,
+                       ("WIS", "CHA"): Cleric,
+                       ("CHA", "STR"): Paladin,
+                       ("CHA", "DEX"): Sorcerer,
+                       ("CHA", "CON"): Warlock,
+                       ("CHA", "INT"): Sorcerer,
+                       ("CHA", "WIS"): Warlock,
+                       }
     maxList = StatsAssignment.mainStats(attributeList)
     return conversionTable[tuple([maxList[0], maxList[1]])](attributeList,maxList)
 
