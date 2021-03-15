@@ -4,12 +4,12 @@ import random
 def roll():
     stat = []
 
-    stat.append(random.randint(1,20))
-    stat.append(random.randint(1,20))
-    stat.append(random.randint(1,20))
-    stat.append(random.randint(1,20))
-    stat.append(random.randint(1,20))
-    stat.append(random.randint(1,20))
+    stat.append(random.randint(1,18))
+    stat.append(random.randint(1,18))
+    stat.append(random.randint(1,18))
+    stat.append(random.randint(1,18))
+    stat.append(random.randint(1,18))
+    stat.append(random.randint(1,18))
     return stat
 
 # Finds the main stats from the inputed list
