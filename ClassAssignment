@@ -51,7 +51,7 @@ class Base:
 
     def __init__(self, attributeList, maxList, size):
         attributes = ["STR", "DEX", "CON", "INT", "WIS", "CHA"]
-        self.maxList = [attributes[maxList[0]],attributes[maxList[1]]]
+        self.maxList = maxList
         attributeModifiers = list(map(self.getModifier, attributeList))
         # This maps all of the attributeList through the get modifier function
         self.attributes = dict(
